@@ -1,0 +1,314 @@
+France Tourism center conducts a special tour program in January every year. This year they are celebrating their 25th anniversary. So, they plan to take the passengers on a big tour around Singapore as per their wish. As part of this, the tourism center requires an application to store and retrieve the passenger_name, place, no_of_days, no_of_tickets, and bill_amount.
+
+ 
+
+Place
+
+Price for one ticket per day
+
+Beach
+
+270
+
+Pilgrimage
+
+350
+
+Heritage
+
+430
+
+Hill Station
+
+780
+
+Water Falls
+
+1200
+
+Adventures
+
+4500
+
+ 
+
+The admin of France Tourism center wants to add different passenger details to the list and needs to alert the passengers when a place is different from the ones given in the above table.
+
+You being their software consultant have been approached to develop a software system which can be used for managing the passenger's details. You need to implement a Python program using the collection to meet the above requirement. Passenger details should be obtained from the user in the console.
+
+Component Specification: Passenger (Model Class)
+
+Type(Class)
+
+Attributes
+
+Methods
+
+Responsibilities
+
+Passenger
+
+passenger_name - string type
+
+place  - string type
+
+no_of_days  - integer type
+
+no_of_tickets  - integer type
+
+bill_amount  - float
+
+Include the getters and setters method for all the attributes.
+
+ 
+
+Note: All the attributes should be declared as private
+
+ 
+
+Requirement 1: Calculate the bill amount
+
+This method calculateBillAmount should accept the place as an argument and calculate the bill amount and return the same.  Bill amount is calculated by multiplying the noOfDays and noOfTickets and also, multiply the price for one ticket per day which is relevant to the passing place name
+
+
+
+Component Specification: Passenger (Utility Class)
+
+Component Name
+
+Type(Class)
+
+Methods
+
+Responsibilities
+
+Calculate the bill amount
+
+Passenger
+
+ calculate_bill_amount(place)
+
+This method has to calculate the bill amount and return the same
+
+Note: All the attributes should be declared as private
+
+ 
+
+Component Specification: InvalidPlaceException(Exception Class)
+
+Type(Class)
+
+Attributes
+
+Methods
+
+Responsibilities
+
+InvalidPlaceException
+
+ 
+
+Include a single argument constructor - InvalidPlaceException(message)
+
+ 
+
+Note: All the attributes should be declared as private
+
+ 
+
+Requirement 2: Validate Place Name
+
+The place should be one of the values from the given place table. If the place name is valid then this method  should return true, else it should throw a user-defined Exception "InvalidPlaceException" with a message "Invalid Place Name"
+
+Component Specification: Tourism (Utility Class)
+
+Component Name
+
+Type(Class)
+
+Methods
+
+Responsibilities
+
+Exception
+
+Validating the place
+
+Tourism
+
+ validate_place_name(place)
+
+Validate the place, if valid return true else this method should throw a user-defined exception
+
+Throw a user-defined exception "InvalidPlaceException" if the place is invalid.
+
+Note: The class and methods should be declared as public and all the attributes should be declared as private
+
+ 
+
+Requirement 3: Add the Passenger object to the list
+
+Whenever Passengers book the tickets for a tour, the Passenger details need to be stored for future reference.
+
+The method add_passenger_details() should accept passenger_anme, place, no_of_days, and no_of_tickets as arguments, and should do the following:
+
+-         Create a 'Passenger' object
+
+-         Set the values to all the attributes
+
+-         Calculate the bill_amount by invoking the calculateBillAmount in Passenger class and set its value.
+
+-         Add this Passenger object to the 'passenger_list'.
+
+
+
+Component Specification: Tourism (Utility Class)
+
+Component Name
+
+Type(Class)
+
+Attributes
+
+Methods
+
+Responsibilities
+
+ 
+
+Tourism
+
+passenger_list
+
+Include the getter and setter method for the passenger list
+
+ 
+
+Add a Passenger object to the passenger_list
+
+Tourism
+
+ 
+
+add_passenger_details( passenger_name, place, no_of_days,no_of_tickets)
+
+This method should create a Passenger object and add that object to the passenger list.
+
+Note: All the attributes should be declared as private
+
+ 
+
+Requirement 4: View the Passenger details based on a place
+
+This method viewPassengerDetails takes place as input and returns the list of Passenger objects. This list contains the object of the the passenger whose destination is equal to the passed destination.
+
+Component Specification: Tourism(Utility Class)
+
+Component Name
+
+Type(Class)
+
+Methods
+
+Responsibilities
+
+View Passenger details
+
+Tourism
+
+view_passenger_details( place)
+
+This method takes place as input then calculate the bill amount and returns the list of Passenger objects. 
+
+This list contains the object of the passenger whose destination is equal to the passed destination.
+
+Note: All the attributes should be declared as private
+
+ 
+
+The file 'tourism_main.py' is to get the inputs like the number of Passengers from the user.
+
+The booking details are in the form of a string in the following format passenger_name:place:no_of_days:no_of_tickets
+
+Parse the passenger details and invoke the validate_place_name() method in the Tourism class by passing the place.
+
+If the place is valid then invoke the add_passengerDetails() the method in the Tourism class by passing the passenger_name, place, no_of_days, no_of_tickets and continue to parse the next record.
+
+If the place is not valid then display the message "Invalid Place Name" and continue to parse the next record.
+
+Note: The passenger details contain both valid and invalid information. All valid passenger records should be added to the list and for the invalid ones, a user-defined exception should be thrown.
+
+Then, get the inputs like Place that needs to be searched from the user and invoke viewPassengerDetails() the method in Tourism class by passing the place.
+
+If the list returned by this method is empty then display the message "No Passengers found" else display the list of passenger details based on place name as shown in the sample input and output.
+
+
+
+Note:
+
+In the Sample Input / Output provided, the highlighted text in bold corresponds to the input given by the user, and the rest of the text represents the output.
+
+Ensure to follow the object-oriented specifications provided in the question.
+
+Ensure to provide the names for classes, attributes, and methods as specified in the question.
+
+Adhere to the code template, if provided.
+
+ 
+
+Sample Input / Output 1:
+
+Enter the number of registrations:
+
+3
+
+Enter the registration details 1:
+
+Alex:Beach:2:4
+
+Enter the registration details 2:
+
+Jerold:Pilgrimage:4:12
+
+Enter the registration details 3:
+
+Oliver:Adventures:15:1
+
+Enter the Place that needs to be searched:
+
+Adventures
+
+Passenger Name Oliver
+
+Number Of Days 15
+
+Number Of Tickets 1
+
+Bill Amount 67500.0
+
+ 
+
+Sample Input / Output 2:
+
+Enter the number of registrations:
+
+2
+
+Enter the registration details 1:
+
+Sam:Camp:7:8
+
+Invalid Place Name
+
+
+
+Enter the Registration Details 2
+
+Harry:Heritage:6:5
+
+Enter the Place that needs to be searched:
+
+Hill Station
+
+No Passengers found
+
